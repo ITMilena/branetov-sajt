@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ponuda | Branetov sajt{% endblock %}
+
+{% block content %}
+
+<!-- HERO sa slikom u pozadini (bez MajstorBob) -->
+<section class="section">
+  <div class="container">
+
+    <div class="box" style="
+      padding:18px;
+      background:
+        linear-gradient(180deg, rgba(11,13,18,.72), rgba(11,13,18,.92)),
+        url('{% static "img/DrvoPozadina.jpg" %}') center/cover no-repeat;
+    ">
+      <span class="hero__badge">Ponuda</span>
+      <h1 style="margin:10px 0 8px;">Usluge i radovi po meri</h1>
+      <p style="margin:0; color:rgba(233,236,245,.86); font-size:18px; max-width:850px;">
+        Krovovi, nadstrešnice, pergole, letnjikovci i drveni detalji.
+        Cena i rok zavise od dimenzija i stanja na terenu — pošalji okvirne mere i sliku mesta.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="{% url 'kontakt' %}">Traži ponudu</a>
+        <a class="btn btn--ghost" href="{% url 'gallery' %}">Pogledaj galeriju</a>
+      </div>
+
+      <div class="box" style="margin-top:14px; background:rgba(17,21,34,.70);">
+        <div class="card__meta" style="color:rgba(233,236,245,.78);">
+          Najbrže do ponude: <b>tip posla</b> + <b>lokacija</b> + <b>dimenzije</b> (+ 1–2 slike ako može).
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SEKCIJA: KARTICE SA SLIKAMA (vizuelno drugačije od O nama) -->
+<section class="section">
+  <div class="container section__head">
+    <h2>Najtraženije usluge</h2>
+    <p>Odaberi šta ti treba — klik na “Detalji” vodi na kontakt ili projekte.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid cards">
+
+      <!-- KROVOVI -->
+      <div class="card card--project">
+        <div class="card__img">
+          <img src="{% static 'img/KrovnaKonstrukcija.jpeg' %}" alt="Krovovi">
+        </div>
+        <div class="card__body">
+          <div class="card__title">Krovovi</div>
+          <div class="card__text">
+            Krovne konstrukcije, ojačanja, zamene elemenata i popravke. Uredni spojevi i stabilnost.
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn--ghost" href="{% url 'gallery' %}">Slike</a>
+            <a class="btn" href="{% url 'kontakt' %}">Traži ponudu</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NADSTREŠNICE -->
+      <div class="card card--project">
+        <div class="card__img">
+          <img src="{% static 'img/Nadstresnica.jpeg' %}" alt="Nadstrešnice">
+        </div>
+        <div class="card__body">
+          <div class="card__title">Nadstrešnice</div>
+          <div class="card__text">
+            Ulaz, terasa, parking — konstrukcija po meri, sa dogovorom oko pokrivača i završne obrade.
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn--ghost" href="{% url 'gallery' %}">Slike</a>
+            <a class="btn" href="{% url 'kontakt' %}">Traži ponudu</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- LETNJIKOVAC / PERGOLA -->
+      <div class="card card--project">
+        <div class="card__img">
+          <img src="{% static 'img/Letnjikovac.jpeg' %}" alt="Letnjikovci i pergole">
+        </div>
+        <div class="card__body">
+          <div class="card__title">Letnjikovci i pergole</div>
+          <div class="card__text">
+            Konstrukcije za dvorište/terasu. Dimenzije, raspored stubova i detalji po dogovoru.
+          </div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn--ghost" href="{% url 'gallery' %}">Slike</a>
+            <a class="btn" href="{% url 'kontakt' %}">Traži ponudu</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEKCIJA: "ŠTA DOBIJAS" + mini proces (drugačije od O nama) -->
+<section class="section">
+  <div class="container">
+    <div class="detail">
+
+      <div>
+        <div class="box">
+          <h2 style="margin:0 0 10px;">Šta dobijaš</h2>
+          <ul class="bullets" style="margin:0;">
+            <li><b>Preciznu meru</b> i dogovor pre početka</li>
+            <li><b>Stabilnu konstrukciju</b> (spojevi i učvršćenja)</li>
+            <li><b>Urednu završnicu</b> i čistu montažu</li>
+            <li><b>Rok</b> i plan rada po dogovoru</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2 style="margin:0 0 10px;">Kada treba da zoveš</h2>
+          <p style="margin:0; color:var(--muted);">
+            Ako imaš problem sa prokišnjavanjem, škripom, labavim delovima,
+            ili želiš novu konstrukciju — najbolje je da pošalješ slike i okvirne mere.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="hero__card">
+          <h3 style="margin:0 0 10px;">Brzi upit (šta da pošalješ)</h3>
+
+          <div class="box" style="margin:0 0 10px; background:rgba(255,255,255,.03);">
+            <b>Tip posla</b>
+            <div class="card__meta" style="margin-top:6px;">krov / nadstrešnica / pergola / letnjikovac</div>
+          </div>
+
+          <div class="box" style="margin:0 0 10px; background:rgba(255,255,255,.03);">
+            <b>Lokacija</b>
+            <div class="card__meta" style="margin-top:6px;">mesto + deo grada (ako treba)</div>
+          </div>
+
+          <div class="box" style="margin:0 0 10px; background:rgba(255,255,255,.03);">
+            <b>Dimenzije</b>
+            <div class="card__meta" style="margin-top:6px;">širina × dužina × visina (ili otprilike)</div>
+          </div>
+
+          <div class="box" style="margin:0; background:rgba(255,255,255,.03);">
+            <b>Slike</b>
+            <div class="card__meta" style="margin-top:6px;">1–3 slike mesta (ako može)</div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <a class="btn btn--full" href="{% url 'kontakt' %}">Otvori Kontakt</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 10px;">Primer detalja</h3>
+          <div class="grid gallery" style="grid-template-columns: repeat(2, 1fr);">
+            <a class="gitem" href="{% static 'img/KrovniProzor.jpeg' %}" data-caption="Detalj: krovni prozor">
+              <img src="{% static 'img/KrovniProzor.jpeg' %}" alt="Krovni prozor">
+            </a>
+            <a class="gitem" href="{% static 'img/Letnjikovac1.jpeg' %}" data-caption="Detalj: letnjikovac">
+              <img src="{% static 'img/Letnjikovac1.jpeg' %}" alt="Letnjikovac detalj">
+            </a>
+          </div>
+          <p style="margin:10px 0 0; color:var(--muted); font-size:14px;">
+            Klikni na sliku za uvećanje (lightbox).
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} | Branetov sajt{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <h2>{{ category.name }}</h2>
+      <p>Izaberi rad i otvori detalje (opis + galerija).</p>
+    </div>
+
+    <div class="grid cards">
+      {% for p in projects %}
+        <a class="card card--project" href="{{ p.get_absolute_url }}">
+          <div class="card__img">
+            {% if p.cover_url %}
+              <img src="{{ p.cover_url }}" alt="{{ p.title }}">
+            {% else %}
+              <div class="img__ph">Bez slike</div>
+            {% endif %}
+          </div>
+          <div class="card__body">
+            <div class="card__title">{{ p.title }}</div>
+            <div class="card__text">{{ p.short_description }}</div>
+            <div class="card__meta">
+              {% if p.location %}{{ p.location }}{% endif %}
+              {% if p.duration %} • {{ p.duration }}{% endif %}
+            </div>
+          </div>
+        </a>
+      {% empty %}
+        <p>Nema projekata u ovoj kategoriji još.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

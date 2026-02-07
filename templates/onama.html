@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}O nama | Branetov sajt{% endblock %}
+
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <div class="box" style="padding:18px;">
+      <span class="hero__badge">O nama</span>
+      <h1 style="margin:10px 0 8px;">Brane<span style="color:var(--acc);">Works</span></h1>
+      <p style="margin:0; color:var(--muted); font-size:18px;">
+        Radimo drvenu gradnju koja mora da traje: stabilno, precizno i uredno.
+        Ne jurimo “brzinski” — jurimo kvalitet i detalj.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="{% url 'gallery' %}">Pogledaj radove</a>
+        <a class="btn btn--ghost" href="{% url 'ponuda' %}">Usluge</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="detail">
+
+      <div>
+        <div class="box">
+          <h2 style="margin:0 0 10px;">Ko smo</h2>
+          <p style="margin:0; color:var(--muted);">
+            BraneWorks je mala ekipa / majstor koji radi drvene konstrukcije po meri. Najviše radimo krovove, nadstrešnice, pergole i letnjikovce — uz dogovor oko dimenzija, materijala i završne obrade.
+          </p>
+        </div>
+
+        <div class="box">
+          <h2 style="margin:0 0 10px;">Naš pristup</h2>
+          <ul class="bullets" style="margin:0;">
+            <li><b>Preciznost:</b> merimo i planiramo pre nego što krenemo.</li>
+            <li><b>Stabilnost:</b> konstrukcija mora da “drži” i posle godina.</li>
+            <li><b>Urednost:</b> čisti spojevi, završnica i detalji.</li>
+            <li><b>Dogovor:</b> jasni koraci i rokovi, bez iznenađenja.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2 style="margin:0 0 10px;">Šta najčešće radimo</h2>
+          <p style="margin:0; color:var(--muted);">
+            Krovne konstrukcije i popravke • Nadstrešnice za ulaz/terasu/parking • Pergole i letnjikovci •
+            Ograde i drveni detalji • Zamene elemenata po potrebi.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="hero__card">
+          <h3 style="margin:0 0 10px;">Kako ide saradnja</h3>
+
+          <div class="box" style="margin:0 0 10px; background:rgba(255,255,255,.03);">
+            <b>1) Poruka / poziv</b>
+            <div class="card__meta" style="margin-top:6px;">
+              Kažeš tip posla + lokaciju + okvirne dimenzije.
+            </div>
+          </div>
+
+          <div class="box" style="margin:0 0 10px; background:rgba(255,255,255,.03);">
+            <b>2) Dogovor i mera</b>
+            <div class="card__meta" style="margin-top:6px;">
+              Po potrebi izlazak na teren, tačne mere i predlog rešenja.
+            </div>
+          </div>
+
+          <div class="box" style="margin:0; background:rgba(255,255,255,.03);">
+            <b>3) Izrada i montaža</b>
+            <div class="card__meta" style="margin-top:6px;">
+              Rad po dogovoru, uredno i sa završnom proverom.
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <a class="btn btn--full" href="{% url 'kontakt' %}">Kontakt</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 10px;">Brza pitanja</h3>
+          <div style="display:grid; gap:10px;">
+            <div>
+              <b>Da li radite van grada?</b>
+              <div class="card__meta" style="margin-top:4px;">Da, po dogovoru (zavisno od posla i udaljenosti).</div>
+            </div>
+            <div>
+              <b>Da li vi nabavljate materijal?</b>
+              <div class="card__meta" style="margin-top:4px;">Može, najčešće radimo materijal + izrada kao komplet.</div>
+            </div>
+            <div>
+              <b>Kako dobijam cenu?</b>
+              <div class="card__meta" style="margin-top:4px;">Po dimenzijama i tipu konstrukcije (pošalji okvirne mere).</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="box">
+      <h2 style="margin:0 0 10px;">Sledeći korak</h2>
+      <p style="margin:0; color:var(--muted);">
+        Ako želiš ponudu, najbrže je da pogledaš galeriju i pošalješ šta ti se sviđa + dimenzije.
+      </p>
+
+      <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="{% url 'gallery' %}">Galerija</a>
+        <a class="btn btn--ghost" href="{% url 'ponuda' %}">Usluge</a>
+        <a class="btn btn--ghost" href="{% url 'kontakt' %}">Kontakt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,65 @@
+{% load static %}
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Branetov sajt{% endblock %}</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'gradnja/site.css' %}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="logo" href="{% url 'home' %}">Brane<span>Works</span></a>
+
+    <nav class="nav">
+      <a href="{% url 'home' %}">Početna</a>
+      <a href="{% url 'gallery' %}">Galerija</a>
+
+      <div class="nav__drop">
+        <button class="nav__btn" type="button">Projekti ▾</button>
+        <div class="nav__menu">
+          {% for c in categories_nav %}
+            <a href="{% url 'category_detail' c.slug %}">{{ c.name }}</a>
+          {% empty %}
+            <span class="nav__empty">Nema kategorija</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <a href="{% url 'ponuda' %}">Ponuda</a>
+      <a href="{% url 'onama' %}">O nama</a>
+      <a href="{% url 'kontakt' %}">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer">
+  <div style="text-align:center; margin-top:10px; font-size:13px; color:#a9b1c7;">
+  © {{ now|date:"Y" }} BraneWorks |
+  Izrada sajta: <strong>Milena Živković | 060/ 193 - 83 - 73</strong> 
+</div>
+</footer>
+
+
+<!-- Lightbox (radi kad ima .gitem na stranici) -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lightbox__close" type="button" aria-label="Zatvori">×</button>
+  <button class="lightbox__prev" type="button" aria-label="Prethodna">‹</button>
+  <img class="lightbox__img" alt="">
+  <div class="lightbox__cap"></div>
+  <button class="lightbox__next" type="button" aria-label="Sledeća">›</button>
+</div>
+
+<!-- JS -->
+<script src="{% static 'gradnja/lightbox.js' %}"></script>
+</body>
+</html>
+
+

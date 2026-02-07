@@ -1,0 +1,460 @@
+/* ===============================
+   GLOBAL
+================================ */
+
+:root {
+  --bg: #0b0d12;
+  --panel: #111522;
+  --soft: #161b2c;
+  --text: #e9ecf5;
+  --muted: #a9b1c7;
+  --line: #232a40;
+  --acc: #7c5cff;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Arial;
+  background: radial-gradient(900px 600px at 20% 10%, #1a1f34, transparent), var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 13, 18, .7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.logo span {
+  color: var(--acc);
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: var(--muted);
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+/* Dropdown */
+
+.nav__drop {
+  position: relative;
+}
+
+.nav__btn {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav__menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  min-width: 220px;
+  padding: 8px;
+}
+
+.nav__menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.nav__menu a:hover {
+  background: var(--soft);
+  color: var(--text);
+}
+
+.nav__drop:hover .nav__menu {
+  display: block;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.hero {
+  padding: 44px 0 26px;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 22px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.05;
+  margin: 0 0 10px;
+}
+
+.hero h1 span {
+  color: var(--acc);
+}
+
+.hero p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.hero__card {
+  background: linear-gradient(180deg, rgba(124, 92, 255, .18), rgba(17, 21, 34, .7));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.hero__badge {
+  display: inline-block;
+  background: rgba(124, 92, 255, .16);
+  border: 1px solid rgba(124, 92, 255, .25);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--acc);
+  border: 1px solid rgba(124, 92, 255, .4);
+  font-weight: 700;
+  color: white;
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+
+.section {
+  padding: 26px 0;
+}
+
+.section__head h2,
+.section__head h3 {
+  margin: 0;
+}
+
+.section__head p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* ===============================
+   CARDS
+================================ */
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card--link {
+  padding: 16px;
+}
+
+.card__title {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.card__text {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card__meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card__img {
+  height: 190px;
+  background: var(--soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img__ph {
+  color: var(--muted);
+}
+
+.card__body {
+  padding: 14px;
+}
+
+.card--project:hover {
+  transform: translateY(-2px);
+  transition: .18s ease;
+  border-color: rgba(124, 92, 255, .35);
+}
+
+/* ===============================
+   DETAIL
+================================ */
+
+.detail {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 16px;
+}
+
+.box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-top: 12px;
+}
+
+.bullets {
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+/* ===============================
+   GALLERY
+================================ */
+
+.gallery {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.gitem {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--soft);
+  cursor: pointer;
+
+  /* bitno da <a class="gitem"> ne izgleda kao link */
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.gitem img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.gitem:hover {
+  border-color: rgba(124, 92, 255, .35);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0;
+  color: var(--muted);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ===============================
+   LIGHTBOX (Ovo ti je falilo da "radi")
+================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .88);
+  display: none;
+  /* zatvoren */
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+/* otvoren */
+
+.lightbox__content {
+  width: min(1100px, 96%);
+  max-height: 88vh;
+  text-align: center;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: #0b0d12;
+  display: block;
+  margin: 0 auto;
+}
+
+.lightbox__cap {
+  margin-top: 10px;
+  color: rgba(233, 236, 245, .8);
+  font-size: 14px;
+}
+
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  background: rgba(17, 21, 34, .72);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.lightbox__close {
+  top: 16px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.lightbox__prev {
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__next {
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 980px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero__grid,
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .sidecard {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}

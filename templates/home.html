@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Početna | Branetov sajt{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container hero__grid">
+
+    <div>
+      <span class="hero__badge">Drvena gradnja • Krovovi • Nadstrešnice • Pergole</span>
+      <h1>Majstor <span>Brane</span> — radovi koji traju</h1>
+      <p>
+        Izrada i ugradnja krovova, nadstrešnica, pergola, letnjikovaca i ostalih drvenih konstrukcija.
+        Precizno, čvrsto i uredno, sa dogovorom i rokom.
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn" href="{% url 'gallery' %}">Pogledaj galeriju</a>
+        <a class="btn btn--ghost" href="{% url 'ponuda' %}">Pogledaj ponudu</a>
+      </div>
+
+      <div class="box">
+        <div class="card__meta">
+          Radimo po dogovoru • Izlazak na teren • Materijal po meri
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__card">
+      <h3 style="margin:0 0 10px;">Šta radimo</h3>
+      <ul class="bullets" style="margin:0;">
+        <li>Krovne konstrukcije (drvo, ojačanja, popravke)</li>
+        <li>Nadstrešnice (ulaz, terasa, parking)</li>
+        <li>Pergole i letnjikovci</li>
+        <li>Ograde, kapije, detalji od drveta</li>
+        <li>Ugradnja / zamena elemenata po potrebi</li>
+      </ul>
+
+      <div style="margin-top:12px;">
+        <a class="btn btn--full" href="{% url 'onama' %}">Pročitaj više o nama</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="grid cards">
+      {% for p in featured %}
+        <a class="card card--project" href="{% url 'project_detail' p.slug %}">
+          <div class="card__img">
+            {% if p.cover_url %}
+              <img src="{{ p.cover_url }}" alt="{{ p.title }}">
+            {% else %}
+              <div class="img__ph">Nema naslovne slike</div>
+            {% endif %}
+          </div>
+
+          <div class="card__body">
+            <div class="card__title">{{ p.title }}</div>
+            {% if p.short_description %}
+              <div class="card__text">{{ p.short_description }}</div>
+            {% else %}
+              <div class="card__text">Klikni za detalje i slike projekta.</div>
+            {% endif %}
+
+            <div style="margin-top:10px;" class="card__meta">
+              {% if p.location %}📍 {{ p.location }}{% endif %}
+              {% if p.duration %}{% if p.location %} • {% endif %}⏱ {{ p.duration }}{% endif %}
+            </div>
+          </div>
+        </a>
+      {% empty %}
+        
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
