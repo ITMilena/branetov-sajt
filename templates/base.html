@@ -1,4 +1,5 @@
 {% load static %}
+{% load django_browser_reload %}
 <!doctype html>
 <html lang="sr">
 <head>
@@ -20,7 +21,6 @@
       <a href="{% url 'gallery' %}">Galerija</a>
 
       <div class="nav__drop">
-        <button class="nav__btn" type="button">Projekti ▾</button>
         <div class="nav__menu">
           {% for c in categories_nav %}
             <a href="{% url 'category_detail' c.slug %}">{{ c.name }}</a>
@@ -40,13 +40,13 @@
 <main>
   {% block content %}{% endblock %}
 </main>
+
 <footer class="footer">
   <div style="text-align:center; margin-top:10px; font-size:13px; color:#a9b1c7;">
-  © {{ now|date:"Y" }} BraneWorks |
-  Izrada sajta: <strong>Milena Živković | 060/ 193 - 83 - 73</strong> 
-</div>
+    © {% now "Y" %} BraneWorks |
+    Izrada sajta: <strong>Milena Živković | 060/ 193 - 83 - 73</strong>
+  </div>
 </footer>
-
 
 <!-- Lightbox (radi kad ima .gitem na stranici) -->
 <div id="lightbox" class="lightbox" aria-hidden="true">
@@ -59,7 +59,8 @@
 
 <!-- JS -->
 <script src="{% static 'gradnja/lightbox.js' %}"></script>
+
+<!-- Django Browser Reload: stavi pred </body> -->
+{% django_browser_reload_script %}
 </body>
 </html>
-
-

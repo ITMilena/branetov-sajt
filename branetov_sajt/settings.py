@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_browser_reload",
 
     "gradnja",
 ]
@@ -117,9 +118,12 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
 
-# Render (collectstatic) – bez ovoga ume da baguje deploy
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # -------------------------
 # MEDIA FILES
