@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}Branetov sajt{% endblock %}</title>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="{% static 'gradnja/site.css' %}">
 </head>
 <body>
@@ -47,7 +46,6 @@
   </div>
 </footer>
 
-<!-- Lightbox (radi kad ima .gitem na stranici) -->
 <div id="lightbox" class="lightbox" aria-hidden="true">
   <button class="lightbox__close" type="button" aria-label="Zatvori">×</button>
   <button class="lightbox__prev" type="button" aria-label="Prethodna">‹</button>
@@ -56,14 +54,6 @@
   <button class="lightbox__next" type="button" aria-label="Sledeća">›</button>
 </div>
 
-<!-- JS -->
 <script src="{% static 'gradnja/lightbox.js' %}"></script>
-
-<!-- Django Browser Reload: stavi pred </body> -->
-{% django_browser_reload_script %}
-{% if debug %}
-    {% load django_browser_reload %}
-    {% django_browser_reload_script %}
-{% endif %}
 </body>
 </html>
