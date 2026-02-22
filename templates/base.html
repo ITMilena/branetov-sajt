@@ -1,5 +1,4 @@
 {% load static %}
-{% load django_browser_reload %}
 <!doctype html>
 <html lang="sr">
 <head>
@@ -62,5 +61,9 @@
 
 <!-- Django Browser Reload: stavi pred </body> -->
 {% django_browser_reload_script %}
+{% if debug %}
+    {% load django_browser_reload %}
+    {% django_browser_reload_script %}
+{% endif %}
 </body>
 </html>
