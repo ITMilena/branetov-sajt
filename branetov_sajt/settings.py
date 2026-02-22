@@ -1,10 +1,17 @@
+"""
+Django settings for branetov_sajt project.
+"""
+
 from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# -------------------------
+# CORE SECURITY
+# -------------------------
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-insecure-change-me")
-DEBUG = os.getenv("DEBUG", "0") == "1"
+DEBUG = os.getenv("DEBUG", "0") == "1"   # na Renderu stavi DEBUG=0
 
 RENDER_HOST = os.getenv("RENDER_EXTERNAL_HOSTNAME", "")
 
@@ -20,6 +27,9 @@ CSRF_TRUSTED_ORIGINS = []
 if RENDER_HOST:
     CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_HOST}")
 
+# -------------------------
+# APPLICATIONS
+# -------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -27,12 +37,21 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "gradnja",
 ]
 
+# browser reload samo lokalno (DEBUG=1)
+if DEBUG:
+    INSTALLED_APPS += ["django_browser_reload"]
+
+# -------------------------
+# MIDDLEWARE
+# -------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -41,13 +60,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# Browser reload SAMO lokalno (i samo ako stvarno koristiš)
+# browser reload middleware samo lokalno
 if DEBUG:
-    INSTALLED_APPS += ["django_browser_reload"]
-    MIDDLEWARE += ["django_browser_reload.middleware.BrowserReloadMiddleware"]
+    MIDDLEWARE.insert(
+        3, "django_browser_reload.middleware.BrowserReloadMiddleware")
 
 ROOT_URLCONF = "branetov_sajt.urls"
+WSGI_APPLICATION = "branetov_sajt.wsgi.application"
 
+# -------------------------
+# TEMPLATES
+# -------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -59,14 +82,16 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
                 "gradnja.context_processors.nav_categories",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "branetov_sajt.wsgi.application"
-
+# -------------------------
+# DATABASE
+# -------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -74,11 +99,17 @@ DATABASES = {
     }
 }
 
+# -------------------------
+# INTERNATIONALIZATION
+# -------------------------
 LANGUAGE_CODE = "sr-latn"
 TIME_ZONE = "Europe/Belgrade"
 USE_I18N = True
 USE_TZ = True
 
+# -------------------------
+# STATIC FILES (WhiteNoise)
+# -------------------------
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -89,11 +120,13 @@ STORAGES = {
     }
 }
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# -------------------------
+# SECURITY (Render)
+# -------------------------
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT", "0") == "1"
 SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "0") == "1"
 CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "0") == "1"
 
-# Render proxy header (dobro kad DEBUG=0)
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

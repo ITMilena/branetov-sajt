@@ -7,7 +7,7 @@ urlpatterns = [
     path("", include("gradnja.urls")),
 ]
 
-# browser reload samo lokalno
+# samo lokalno
 if settings.DEBUG:
     urlpatterns += [
         path("__reload__/", include("django_browser_reload.urls")),
