@@ -6,6 +6,9 @@ Django 6.0.1
 from pathlib import Path
 import os
 
+# -------------------------
+# PATHS
+# -------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # -------------------------
@@ -39,13 +42,20 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_browser_reload",
 
     "gradnja",
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ["django_browser_reload"]
+
+# -------------------------
+# MIDDLEWARE
+# -------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -54,8 +64,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-
+# -------------------------
+# URL / WSGI
+# -------------------------
 ROOT_URLCONF = "branetov_sajt.urls"
+WSGI_APPLICATION = "branetov_sajt.wsgi.application"
 
 # -------------------------
 # TEMPLATES
@@ -78,10 +91,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
-WSGI_APPLICATION = "branetov_sajt.wsgi.application"
-
 
 # -------------------------
 # DATABASE
@@ -112,7 +121,7 @@ USE_I18N = True
 USE_TZ = True
 
 # -------------------------
-# STATIC FILES
+# STATIC FILES (WhiteNoise)
 # -------------------------
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
@@ -120,15 +129,16 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     }
 }
 
+# WhiteNoise dodatne opcije (ne mora, ali je lepo)
+WHITENOISE_MAX_AGE = 31536000  # 1 godina cache za verzionisane fajlove
 
 # -------------------------
 # MEDIA FILES
 # -------------------------
-# (ovo ti ne smeta i bez Pillow; služi ako kasnije dodaš upload ili fajlove)
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
@@ -136,10 +146,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # EMAIL (SIGURNO - preko ENV)
 # -------------------------
 EMAIL_BACKEND = os.getenv(
-    "EMAIL_BACKEND",
-    "django.core.mail.backends.smtp.EmailBackend"
-)
-
+    "EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
 EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "1") == "1"
@@ -150,21 +157,18 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", EMAIL_HOST_USER)
 
 # -------------------------
-# PRODUCTION SECURITY (opciono)
+# PRODUCTION SECURITY (opciono preko ENV)
 # -------------------------
-# Ako želiš da ti Render bude ekstra siguran, na Render stavi ENV:
-# SECURE_SSL_REDIRECT=1
-# SESSION_COOKIE_SECURE=1
-# CSRF_COOKIE_SECURE=1
 SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT", "0") == "1"
 SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "0") == "1"
 CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "0") == "1"
+
+# Preporuka za Render kad DEBUG=0:
+# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # -------------------------
 # DEFAULT PRIMARY KEY
 # -------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# WhiteNoise - samo u produkciji (Render)
 if not DEBUG:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
