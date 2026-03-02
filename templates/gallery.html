@@ -6,134 +6,155 @@
   <div class="container">
     <div class="section__head">
       <h2>Galerija</h2>
-      <p>Izaberite kategoriju da vidite samo radove iz te grupe.</p>
+      <p>Izaberite kategoriju.</p>
 
-      <!-- FILTERI / KATEGORIJE -->
+      <!-- KATEGORIJE (NEMA "SVE") -->
       <div class="gallery-filters" style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="gfilter is-active" type="button" data-filter="all">Sve</button>
-        <button class="gfilter" type="button" data-filter="krovovi">Krovovi</button>
-        <button class="gfilter" type="button" data-filter="nadstresnice">Nadstrešnice</button>
+        <button class="gfilter is-active" type="button" data-filter="krovovi">Krovovi</button>
+        <button class="gfilter" type="button" data-filter="krovni-prozori">Krovni prozori</button>
         <button class="gfilter" type="button" data-filter="letnjikovci">Letnjikovci</button>
-        <button class="gfilter" type="button" data-filter="objekti">Objekti</button>
-        <button class="gfilter" type="button" data-filter="enterijer">Enterijer</button>
+        <button class="gfilter" type="button" data-filter="nadstresnice">Nadstrešnice</button>
+        <button class="gfilter" type="button" data-filter="objekat">Objekat</button>
+        <button class="gfilter" type="button" data-filter="lamperije">Lamperije</button>
       </div>
     </div>
 
     <!-- GRID -->
     <div class="grid gallery" style="margin-top:14px;">
-      {# ====== KROVOVI ====== #}
+
+      <!-- FIKSNE SLIKE -->
       <div class="gitem" data-cat="krovovi"
            data-full="{% static 'img/KrovnaKonstrukcija.jpeg' %}"
            data-cap="Krovna konstrukcija">
         <img src="{% static 'img/KrovnaKonstrukcija.jpeg' %}" alt="Krovna konstrukcija">
       </div>
 
-      <div class="gitem" data-cat="krovovi"
+      <div class="gitem" data-cat="krovni-prozori"
            data-full="{% static 'img/KrovniProzor.jpeg' %}"
            data-cap="Krovni prozor">
         <img src="{% static 'img/KrovniProzor.jpeg' %}" alt="Krovni prozor">
       </div>
 
-      {# ====== LETNJIKOVCI ====== #}
       <div class="gitem" data-cat="letnjikovci"
-           data-full="{% static 'img/Letnjikovac1.jpeg' %}"
+           data-full="{% static 'img/Letnjikovac.jpeg' %}"
            data-cap="Letnjikovac">
-        <img src="{% static 'img/Letnjikovac1.jpeg' %}" alt="Letnjikovac">
+        <img src="{% static 'img/Letnjikovac.jpeg' %}" alt="Letnjikovac">
       </div>
 
-      {# ====== NADSTREŠNICE ====== #}
+      <div class="gitem" data-cat="letnjikovci"
+           data-full="{% static 'img/Letnjikovac1.jpeg' %}"
+           data-cap="Letnjikovac 1">
+        <img src="{% static 'img/Letnjikovac1.jpeg' %}" alt="Letnjikovac 1">
+      </div>
+
       <div class="gitem" data-cat="nadstresnice"
            data-full="{% static 'img/Nadstresnica.jpeg' %}"
            data-cap="Nadstrešnica">
         <img src="{% static 'img/Nadstresnica.jpeg' %}" alt="Nadstrešnica">
       </div>
 
-      {# ====== OSTALO (primeri slika1..21) — samo dodeli kategorije kako želiš ====== #}
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika1.jpg' %}" data-cap="Objekat 1">
-        <img src="{% static 'img/slika1.jpg' %}" alt="Objekat 1">
+      <!-- slika1..slika33 (SVE .jpeg) -->
+
+      <!-- slika1 u krovovi -->
+      <div class="gitem" data-cat="krovovi"
+           data-full="{% static 'img/slika1.jpeg' %}" data-cap="Slika 1">
+        <img src="{% static 'img/slika1.jpeg' %}" alt="Slika 1">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika2.jpg' %}" data-cap="Objekat 2">
-        <img src="{% static 'img/slika2.jpg' %}" alt="Objekat 2">
+      <!-- slika2 u krovovi -->
+      <div class="gitem" data-cat="krovovi"
+           data-full="{% static 'img/slika2.jpeg' %}" data-cap="Slika 2">
+        <img src="{% static 'img/slika2.jpeg' %}" alt="Slika 2">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika3.jpg' %}" data-cap="Objekat 3">
-        <img src="{% static 'img/slika3.jpg' %}" alt="Objekat 3">
+      <!-- slika3 u krovovi i objekat -->
+      <div class="gitem" data-cat="krovovi objekat"
+           data-full="{% static 'img/slika3.jpeg' %}" data-cap="Slika 3">
+        <img src="{% static 'img/slika3.jpeg' %}" alt="Slika 3">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika4.jpg' %}" data-cap="Objekat 4">
-        <img src="{% static 'img/slika4.jpg' %}" alt="Objekat 4">
+      <!-- slika4 u krovovi -->
+      <div class="gitem" data-cat="krovovi"
+           data-full="{% static 'img/slika4.jpeg' %}" data-cap="Slika 4">
+        <img src="{% static 'img/slika4.jpeg' %}" alt="Slika 4">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika5.jpg' %}" data-cap="Objekat 5">
-        <img src="{% static 'img/slika5.jpg' %}" alt="Objekat 5">
+      <!-- slika5 u krovovi -->
+      <div class="gitem" data-cat="krovovi"
+           data-full="{% static 'img/slika5.jpeg' %}" data-cap="Slika 5">
+        <img src="{% static 'img/slika5.jpeg' %}" alt="Slika 5">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika6.jpg' %}" data-cap="Objekat 6">
-        <img src="{% static 'img/slika6.jpg' %}" alt="Objekat 6">
+      <!-- slika6 u objekat -->
+      <div class="gitem" data-cat="objekat"
+           data-full="{% static 'img/slika6.jpeg' %}" data-cap="Slika 6">
+        <img src="{% static 'img/slika6.jpeg' %}" alt="Slika 6">
       </div>
 
-      <div class="gitem" data-cat="krovovi" data-full="{% static 'img/slika7.jpg' %}" data-cap="Krov 1">
-        <img src="{% static 'img/slika7.jpg' %}" alt="Krov 1">
+      <!-- slika7 u objekat -->
+      <div class="gitem" data-cat="objekat"
+           data-full="{% static 'img/slika7.jpeg' %}" data-cap="Slika 7">
+        <img src="{% static 'img/slika7.jpeg' %}" alt="Slika 7">
       </div>
 
-      <div class="gitem" data-cat="krovovi" data-full="{% static 'img/slika8.jpg' %}" data-cap="Krov 2">
-        <img src="{% static 'img/slika8.jpg' %}" alt="Krov 2">
+      <!-- slika8 u lamperije -->
+      <div class="gitem" data-cat="lamperije"
+           data-full="{% static 'img/slika8.jpeg' %}" data-cap="Slika 8">
+        <img src="{% static 'img/slika8.jpeg' %}" alt="Slika 8">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika9.jpg' %}" data-cap="Objekat 9">
-        <img src="{% static 'img/slika9.jpg' %}" alt="Objekat 9">
+      <!-- slika9 u lamperije -->
+      <div class="gitem" data-cat="lamperije"
+           data-full="{% static 'img/slika9.jpeg' %}" data-cap="Slika 9">
+        <img src="{% static 'img/slika9.jpeg' %}" alt="Slika 9">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika10.jpeg' %}" data-cap="Objekat 10">
-        <img src="{% static 'img/slika10.jpeg' %}" alt="Objekat 10">
+      <!-- slika10 u letnjikovce -->
+      <div class="gitem" data-cat="letnjikovci"
+           data-full="{% static 'img/slika10.jpeg' %}" data-cap="Slika 10">
+        <img src="{% static 'img/slika10.jpeg' %}" alt="Slika 10">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika11.jpeg' %}" data-cap="Objekat 11">
-        <img src="{% static 'img/slika11.jpeg' %}" alt="Objekat 11">
+      <!-- slika11 u letnjikovce -->
+      <div class="gitem" data-cat="letnjikovci"
+           data-full="{% static 'img/slika11.jpeg' %}" data-cap="Slika 11">
+        <img src="{% static 'img/slika11.jpeg' %}" alt="Slika 11">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika12.jpeg' %}" data-cap="Objekat 12">
-        <img src="{% static 'img/slika12.jpeg' %}" alt="Objekat 12">
+      <!-- slika12 u letnjikovce -->
+      <div class="gitem" data-cat="letnjikovci"
+           data-full="{% static 'img/slika12.jpeg' %}" data-cap="Slika 12">
+        <img src="{% static 'img/slika12.jpeg' %}" alt="Slika 12">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika13.jpeg' %}" data-cap="Objekat 13">
-        <img src="{% static 'img/slika13.jpeg' %}" alt="Objekat 13">
+      <!-- slika13 u objekat -->
+      <div class="gitem" data-cat="objekat"
+           data-full="{% static 'img/slika13.jpeg' %}" data-cap="Slika 13">
+        <img src="{% static 'img/slika13.jpeg' %}" alt="Slika 13">
       </div>
 
-      <div class="gitem" data-cat="objekti" data-full="{% static 'img/slika14.jpeg' %}" data-cap="Objekat 14">
-        <img src="{% static 'img/slika14.jpeg' %}" alt="Objekat 14">
+      <!-- slika14 u objekat i nadstresnice -->
+      <div class="gitem" data-cat="objekat nadstresnice"
+           data-full="{% static 'img/slika14.jpeg' %}" data-cap="Slika 14">
+        <img src="{% static 'img/slika14.jpeg' %}" alt="Slika 14">
       </div>
 
-      <div class="gitem" data-cat="enterijer" data-full="{% static 'img/slika15.jpeg' %}" data-cap="Enterijer 1">
-        <img src="{% static 'img/slika15.jpeg' %}" alt="Enterijer 1">
+      <!-- slika15..slika28 u krovovi -->
+      {% for i in "15,16,17,18,19,20,21,22,23,24,25,26,27,28".split(",") %}
+      <div class="gitem" data-cat="krovovi"
+           data-full="{% static 'img/slika' %}{{ i }}.jpeg" data-cap="Slika {{ i }}">
+        <img src="{% static 'img/slika' %}{{ i }}.jpeg" alt="Slika {{ i }}">
       </div>
+      {% endfor %}
 
-      <div class="gitem" data-cat="enterijer" data-full="{% static 'img/slika16.jpeg' %}" data-cap="Enterijer 2">
-        <img src="{% static 'img/slika16.jpeg' %}" alt="Enterijer 2">
+      <!-- slika29..slika33 u krovovi i objekat -->
+      {% for i in "29,30,31,32,33".split(",") %}
+      <div class="gitem" data-cat="krovovi objekat"
+           data-full="{% static 'img/slika' %}{{ i }}.jpeg" data-cap="Slika {{ i }}">
+        <img src="{% static 'img/slika' %}{{ i }}.jpeg" alt="Slika {{ i }}">
       </div>
+      {% endfor %}
 
-      <div class="gitem" data-cat="enterijer" data-full="{% static 'img/slika17.jpeg' %}" data-cap="Enterijer 3">
-        <img src="{% static 'img/slika17.jpeg' %}" alt="Enterijer 3">
-      </div>
-
-      <div class="gitem" data-cat="nadstresnice" data-full="{% static 'img/slika18.jpeg' %}" data-cap="Nadstrešnica 2">
-        <img src="{% static 'img/slika18.jpeg' %}" alt="Nadstrešnica 2">
-      </div>
-
-      <div class="gitem" data-cat="nadstresnice" data-full="{% static 'img/slika19.jpeg' %}" data-cap="Nadstrešnica 3">
-        <img src="{% static 'img/slika19.jpeg' %}" alt="Nadstrešnica 3">
-      </div>
-
-      <div class="gitem" data-cat="letnjikovci" data-full="{% static 'img/slika20.jpeg' %}" data-cap="Letnjikovac 2">
-        <img src="{% static 'img/slika20.jpeg' %}" alt="Letnjikovac 2">
-      </div>
-
-      <div class="gitem" data-cat="letnjikovci" data-full="{% static 'img/slika21.jpeg' %}" data-cap="Letnjikovac 3">
-        <img src="{% static 'img/slika21.jpeg' %}" alt="Letnjikovac 3">
-      </div>
-
-      {# NE KORISTIMO MajstorBob.jpeg po tvom zahtevu #}
     </div>
   </div>
 </section>
@@ -150,7 +171,6 @@
   </div>
 </div>
 
-<!-- (OPCIONO) Minimalni stil za aktivno dugme -->
 <style>
   .gfilter{
     padding: 8px 12px;
@@ -167,14 +187,14 @@
 </style>
 
 <script>
-  // ======= FILTER (KATEGORIJE) =======
+  // ===== FILTER (bez "Sve") =====
   const filterBtns = document.querySelectorAll(".gfilter");
   const allItems = Array.from(document.querySelectorAll(".gitem"));
 
   function applyFilter(cat) {
     allItems.forEach(el => {
-      const itemCat = el.dataset.cat || "";
-      const show = (cat === "all") || (itemCat === cat);
+      const cats = (el.dataset.cat || "").split(" ").filter(Boolean); // podrzava vise kategorija
+      const show = cats.includes(cat);
       el.style.display = show ? "" : "none";
       el.classList.toggle("is-hidden", !show);
     });
@@ -188,9 +208,10 @@
     });
   });
 
-  applyFilter("all");
+  // default: prikazi Krovovi
+  applyFilter("krovovi");
 
-  // ======= LIGHTBOX (Samo kroz VIDLjIVE slike) =======
+  // ===== LIGHTBOX (samo kroz vidljive slike) =====
   const lb = document.getElementById("lightbox");
   const lbImg = lb.querySelector(".lightbox__img");
   const lbCap = lb.querySelector(".lightbox__cap");
@@ -209,12 +230,9 @@
     currentIndex = vis.indexOf(item);
     if (currentIndex < 0) currentIndex = 0;
 
-    const full = item.dataset.full;
-    const cap = item.dataset.cap || "";
-
-    lbImg.src = full;
-    lbImg.alt = cap;
-    lbCap.textContent = cap;
+    lbImg.src = item.dataset.full;
+    lbImg.alt = item.dataset.cap || "";
+    lbCap.textContent = item.dataset.cap || "";
 
     lb.style.display = "flex";
     lb.setAttribute("aria-hidden", "false");
@@ -231,18 +249,18 @@
   function showByIndex(i) {
     const vis = visibleItems();
     if (!vis.length) return;
+
     if (i < 0) i = vis.length - 1;
     if (i >= vis.length) i = 0;
 
     currentIndex = i;
-
     const item = vis[currentIndex];
+
     lbImg.src = item.dataset.full;
     lbImg.alt = item.dataset.cap || "";
     lbCap.textContent = item.dataset.cap || "";
   }
 
-  // Klik na sliku -> open
   allItems.forEach(item => {
     item.addEventListener("click", () => openLightbox(item));
   });
@@ -251,16 +269,13 @@
   btnPrev.addEventListener("click", () => showByIndex(currentIndex - 1));
   btnNext.addEventListener("click", () => showByIndex(currentIndex + 1));
 
-  // zatvaranje na ESC + kretanje strelicama
   document.addEventListener("keydown", (e) => {
     if (lb.getAttribute("aria-hidden") === "true") return;
-
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") showByIndex(currentIndex - 1);
     if (e.key === "ArrowRight") showByIndex(currentIndex + 1);
   });
 
-  // zatvori klikom na pozadinu (van slike)
   lb.addEventListener("click", (e) => {
     if (e.target === lb) closeLightbox();
   });
